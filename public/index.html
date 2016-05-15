@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html data-ng-app="GithubApp">
+<head>
+  <title>Github App</title>
+</head>
+<body>
+  <main ng-init="userctrl.getUser();userctrl.getStarred()" ng-controller="userController as userctrl">
+    <section ng-init="">
+      <h2><img src="{{userctrl.user.avatar_url}}" width="50">
+      {{userctrl.user.login}} </h2>
+      Stars: {{userctrl.stars}} | 
+      Followers: {{userctrl.user.followers}} | 
+      Following: {{userctrl.user.login}} | 
+      Starred: {{userctrl.starred.length}}
+    </section>
+
+    <section ng-init="userctrl.getRepos()">
+    <h2>Repositories</h2>
+      <ul>
+        <li ng-repeat="repo in userctrl.repos">
+          <a href="{{repo.html_url}}">{{repo.name}}</a>
+        </li>
+      </ul>
+    </section>
+  </main>
+</body>
+<script type="text/javascript" src="./js/angular.min.js"></script>
+<script type="text/javascript" src="bundle.js"></script>
+</html>
